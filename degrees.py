@@ -56,7 +56,6 @@ def main():
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
     directory = sys.argv[1] if len(sys.argv) == 2 else "large"
-    #directory = "small"
 
     # Load data from files into memory
     print("Loading data...")
@@ -91,8 +90,10 @@ def shortest_path(source, target):
     that connect the source to the target.
     If no possible path, returns None.
     """
+    # declare a set to keep track of explored nodes
     explored = set()
     start = Node(state=source, parent=None, action=None)
+    # Queue is used for BFS algorithm
     frontier = QueueFrontier()
     frontier.add(start)
 
@@ -125,7 +126,6 @@ def shortest_path(source, target):
             newNode = Node(person_id, node, movie_id)
             if not frontier.contains_state(newNode.state) and newNode.state not in explored:
                 frontier.add(newNode)
-
 
 
 def person_id_for_name(name):
